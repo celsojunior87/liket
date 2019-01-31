@@ -8,5 +8,7 @@ class Alunos extends Model
 {
     protected $alunos = 'alunos';
 
+    protected $fillable = array('nome','idade', 'email', 'serie');
+
 
 }

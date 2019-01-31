@@ -82,7 +82,11 @@ class ProfessoresController extends Controller
      */
     public function edit($id)
     {
-        //
+        $title = 'Editar Alunos';
+        $turma = Turma::all();
+        $professor = $this->professor->find($id);
+
+        return view('professor.edit', compact('professor','turma','title'));
     }
 
     /**

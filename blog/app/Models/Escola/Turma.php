@@ -9,6 +9,8 @@ class Turma extends Model
 
     protected $turmas = 'turma';
 
+    protected $fillable = array('nome','turno', 'disciplina', 'alunos_id');
+
     public function BuscarAluno()
     {
         return $this->belongsTo(Alunos::class);

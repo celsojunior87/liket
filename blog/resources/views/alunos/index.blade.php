@@ -32,8 +32,8 @@
                                 <a href="{{route('alunos.edit', $alunos->id )}}" class=" action edit">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </a>
-                                <a href="" class=" action delete">
-                                    <span class="glyphicon glyphicon-trash"></span>
+                                <a href="{{route('alunos.show', $alunos->id)}}" class=" action delete">
+                                    <span class="glyphicon glyphicon-search"></span>
                                 </a>
 
                             </td>

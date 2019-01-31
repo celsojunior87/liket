@@ -27,7 +27,7 @@
                                 <td>{{ $professores->graduacao}}</td>
                                 <td>{{ $professores->especialidade}}</td>
                                 <td>
-                                    <a href="" class=" action edit">
+                                    <a href="{{route('professor.edit', $professores->id )}}" class=" action edit">
                                         <span class="glyphicon glyphicon-pencil"></span>
                                     </a>
                                     <a href="" class=" action delete">

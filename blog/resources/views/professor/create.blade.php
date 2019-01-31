@@ -10,8 +10,7 @@
             <div class="panel-body">
                 <form method="POST" action="{{ route('professor.store') }}">
                     @csrf
-
-                    <div class="form-group row">
+                    <div class="form-group row formteste">
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome:') }}</label>
 
                         <div class="col-md-6">

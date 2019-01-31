@@ -52,7 +52,6 @@ class TurmaController extends Controller
      */
     public function store(Request $request)
     {
-
       // dd($request->all());
          $data = $request->except('_token');
          $insert = $this->turma->insert($data);
@@ -61,11 +60,8 @@ class TurmaController extends Controller
 
          if($insert)
              return redirect()->route('turma.index');
-
          else
              return redirect()->back();
-
-
     }
 
     /**

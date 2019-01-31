@@ -8,7 +8,6 @@ use App\Models\Escola\Alunos;
 
 class AlunosController extends Controller
 {
-
     private $alunos;
 
     public function __construct( Alunos $alunos)
@@ -50,13 +49,11 @@ class AlunosController extends Controller
      */
     public function store(Request $request)
     {
-       //dd($request->all());
         $data = $request->except('_token');
         $insert = $this->alunos->insert($data);
 
         if($insert)
             return redirect()->route('alunos.index');
-
         else
             return redirect()->back();
     }
@@ -69,7 +66,8 @@ class AlunosController extends Controller
      */
     public function show($id)
     {
-        //
+        $alunos = Alunos::find($id);
+        return view('alunos.show',compact('alunos'));
     }
 
     /**
@@ -80,8 +78,9 @@ class AlunosController extends Controller
      */
     public function edit($id)
     {
-        $alunos = Alunos::find($id);
-        return view('alunos.edit', compact('alunos'));
+        $title = 'Editar Alunos';
+        $alunos = $this->alunos->find($id);
+        return view('alunos.edit', compact('alunos','title'));
     }
 
     /**
@@ -91,17 +90,15 @@ class AlunosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data = $request->all();
         $alunos = Alunos::find($id);
 
-        $alunos->nome  = $request->get('nome');
-        $alunos->idade = $request->get('idade');
-        $alunos->email = $request->get('email');
-        $alunos->serie = $request->get('serie');
+        $update = $alunos->update($data);
 
-
-        $alunos->save();
-
-        return redirect('alunos')->with('success', 'Informação editada com sucesso!');
+        if($update)
+            return redirect()->route('alunos.index');
+        else
+            return redirect()->route('alunos.edit',$id)->with(['erros ' => 'falha ao editar']);
     }
 
     /**
@@ -112,6 +109,12 @@ class AlunosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alunos = Alunos::find($id);
+        $delete = $alunos->delete();
+        if($delete)
+            return redirect()->route('alunos.index');
+        else
+            return redirect()->route('alunos.show',$id)->with(['erros'=>'falha ao excluir']);
+
     }
 }

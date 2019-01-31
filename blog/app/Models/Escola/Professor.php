@@ -9,6 +9,7 @@ class Professor extends Model
 
     protected $professors = 'professors';
 
+    protected $fillable = array('nome','graduacao', 'especialidade', 'turma_id');
 
     public function BuscarTurma()
     {
